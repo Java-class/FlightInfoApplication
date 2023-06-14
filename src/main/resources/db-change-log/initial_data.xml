@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="init-data-2023-06-13-19-40" author="M.Anbarmoo">
+        <sql>
+            --- Insert Airport Data
+            INSERT INTO airport (id, name, code, address)
+            VALUES ('A1', 'Airport1', 'ARP1', 'address1');
+            INSERT INTO airport (id, name, code, address)
+            VALUES ('A2', 'Airport2', 'ARP2', 'address2');
+            INSERT INTO airport (id, name, code, address)
+            VALUES ('A3', 'Airport3', 'ARP3', 'address3');
+            INSERT INTO airport (id, name, code, address)
+            VALUES ('A4', 'Airport4', 'ARP4', 'address4');
+            INSERT INTO airport (id, name, code, address)
+            VALUES ('A5', 'Airport5', 'ARP5', 'address5');
+            --- Insert Flight Data
+            INSERT INTO flight (id, source_airport_id, flight_date, flight_number, flight_type)
+            VALUES ('53e56e62-0a06-11ee-be56-0242ac120002', 'A1', '2023-06-13 08:00:00', 'FLA1A-0A06',
+                    'ARRIVING');
+
+            INSERT INTO flight (id, source_airport_id, flight_date, flight_number, flight_type)
+            VALUES ('53e57178-0a06-11ee-be56-0242ac120002', 'A1', '2023-06-13 21:00:00', 'FLA1D-0A06',
+                    'DEPARTING');
+
+            INSERT INTO flight (id, source_airport_id, flight_date, flight_number, flight_type)
+            VALUES ('53e575a6-0a06-11ee-be56-0242ac120002', 'A2', '2023-06-13 08:00:00', 'FLA2A-0A06',
+                    'ARRIVING');
+
+            INSERT INTO flight (id, source_airport_id, flight_date, flight_number, flight_type)
+            VALUES ('53e57718-0a06-11ee-be56-0242ac120002', 'A2', '2023-06-13 21:00:00', 'FLA2D-0A06',
+                    'DEPARTING');
+
+            --- Insert Cargo and Baggage Data
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e5783a-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'CARGO', 20000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e57952-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'CARGO', 50000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e57a60-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'CARGO', 120000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e57b78-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'CARGO', 25000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e57c90-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'CARGO', 240000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e57d9e-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'BAGGAGE', 2000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e58122-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'BAGGAGE', 10000);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e58230-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'BAGGAGE', 600);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e5833e-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'BAGGAGE', 950);
+
+            INSERT INTO cargo (id, flight_id, cargo_type, weight)
+            VALUES ('53e5844c-0a06-11ee-be56-0242ac120002', '53e56e62-0a06-11ee-be56-0242ac120002', 'BAGGAGE', 8000);
+
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

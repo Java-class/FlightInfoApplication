@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="init-db-2023-06-13-18-50" author="M.Anbarmoo">
+        <sql>
+            create table airport
+            (
+                id      varchar(255) not null
+                    primary key,
+                name    varchar(255),
+                code    varchar(255),
+                address varchar(255)
+            );
+            alter table airport
+                owner to postgres;
+            create table flight
+            (
+                id                varchar(255) not null
+                    primary key,
+                source_airport_id varchar(255) not null
+                    constraint fk_airport_id
+                        references airport,
+                flight_date       timestamp,
+                flight_number     varchar(255),
+                flight_type       varchar(255)
+                    constraint flight_type_check
+                        check ((flight_type)::text = ANY
+                    ((ARRAY ['ARRIVING':: character varying, 'DEPARTING':: character varying])::text[])
+            )
+                );
+            alter table flight
+                owner to postgres;
+            create table cargo
+            (
+                id         varchar(255) not null
+                    primary key,
+                flight_id  varchar(255)
+                    constraint fk_flight_id
+                        references flight,
+                cargo_type varchar(255)
+                    constraint cargo_type_check
+                        check ((cargo_type)::text = ANY
+                    ((ARRAY ['CARGO':: character varying, 'BAGGAGE':: character varying])::text[])
+            ) ,
+                weight     bigint
+            );
+            alter table cargo
+                owner to postgres;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,26 @@
+version: "3"
+services:
+  java:
+    depends_on:
+      - postgres_db
+    image: openjdk:17
+    volumes:
+      - ./:/app
+    command: bash -c "cd /app && java -jar target/FlightInfoApplication-1.0.0.jar --port=8081"
+    ports:
+      - "8081:8081"
+    container_name: flight_info_app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=12345ma
+
+
+  postgres_db:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345ma
+    ports:
+      - "5432:5432"
+
