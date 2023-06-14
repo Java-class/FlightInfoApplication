@@ -60,4 +60,4 @@ For run this project, you must install docker first and after that doing flowing
 ## GitHub Repository
 
 You can find all project source code in my GitHub repository
-(https://github.com/Java-class/TR-Candlestick)
+(https://github.com/Java-class/FlightInfoApplication)
